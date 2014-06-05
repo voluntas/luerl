@@ -25,9 +25,6 @@
 
 -export([chunk/2]).
 
--import(ordsets, [add_element/2,is_element/2,union/1,union/2,
-		  subtract/2,intersection/2]).
-
 chunk(#code{code=C0}=Code, Opts) ->
     {C1,_,nul} = exp(C0, nul),			%No local state here!
     luerl_comp:debug_print(Opts, "cf: ~p\n", [C1]),

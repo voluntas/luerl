@@ -7,3 +7,6 @@ src/luerl_scan.erl
 src/luerl_parse.erl
 erl_crash.dump
 test/*
+
+ebin/*
+.rebar/*

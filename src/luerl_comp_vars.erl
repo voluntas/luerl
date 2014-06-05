@@ -25,8 +25,8 @@
 
 -export([chunk/2]).
 
--import(ordsets, [add_element/2,del_element/2,is_element/2,
-		  union/1,union/2,subtract/2,intersection/2]).
+-import(ordsets, [add_element/2,del_element/2,
+		  union/1,union/2,subtract/2]).
 
 chunk(#code{code=C0}=Code, Opts) ->
     {C1,_,_,nul} = functiondef(C0, [], nul),	%No local state here!

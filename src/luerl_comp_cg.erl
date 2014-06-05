@@ -26,8 +26,6 @@
 
 -export([chunk/2]).
 
--import(ordsets, [add_element/2,is_element/2,union/1,union/2,
-		  subtract/2,intersection/2,new/0]).
 
 %% chunk(St0, Opts) -> {ok,St0}.
 %%  Return a list of instructions to define the chunk function.
