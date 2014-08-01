@@ -204,9 +204,8 @@ rawequal([A1,A2|_], St) -> {[A1 =:= A2],St};
 rawequal(As, St) -> badarg_error(rawequal, As, St).
 
 rawlen([A|_], St) when is_binary(A) -> {[float(byte_size(A))],St};
-rawlen([#tref{i=N}|_], St) ->
-    #table{a=Arr} = ?GET_TABLE(N, St#luerl.ttab),
-    {[float(array:size(Arr))],St};
+rawlen([#tref{}=T|_], St) ->
+    {[luerl_lib_table:raw_length(T, St)],St};
 rawlen(As, St) -> badarg_error(rawlen, As, St).
 
 rawget([#tref{i=N},K|_], St) when is_number(K) ->
@@ -383,7 +382,7 @@ load(As, St) ->
     end.
 
 loadfile(As, St) ->
-    case luerl_lib:conv_list(As, [string,lua_strinf,lua_any]) of
+    case luerl_lib:conv_list(As, [string,lua_string,lua_any]) of
 	[F|_] ->
 	    Ret = luerl_comp:file(F),		%Compile the file
 	    load_ret(Ret, St);
