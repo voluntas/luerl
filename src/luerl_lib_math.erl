@@ -208,6 +208,8 @@ rad(As, St) ->
 	_ -> badarg_error(sinh, As, St)
     end.
 
+random(As, As) ->
+    As;
 random(As, St) ->
     case luerl_lib:to_ints(As) of
 	[] -> {[random:uniform()],St};		%0-1.0
